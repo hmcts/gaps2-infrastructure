@@ -9,8 +9,8 @@ module "storage_account" {
   account_tier             = "Standard"
   account_replication_type = "GRS"
 
-  enable_hns               = true
-  enable_sftp              = true
+  enable_hns  = true
+  enable_sftp = true
 
   role_assignments = [
     "Storage Blob Data Contributor"
@@ -27,20 +27,20 @@ resource "azurerm_storage_account_local_user" "IH" {
 
   name                 = "IH"
   storage_account_id   = module.storage_account.storageaccount_id
-  ssh_key_enabled      = true
   ssh_password_enabled = true
-  home_directory       = "example_path"
-  ssh_authorized_key {
-    description = "key1"
-    key         = local.first_public_key
-  }
+  home_directory       = "/"
 
   permission_scope {
     permissions {
       read   = true
+      list   = true
       create = true
     }
     service       = "blob"
     resource_name = azurerm_storage_container.ih.name
   }
+
+  depends_on = [
+    module.key_vault
+  ]
 }

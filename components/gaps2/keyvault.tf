@@ -7,3 +7,16 @@ module "key_vault" {
   env                 = var.env
   common_tags         = module.tags.common_tags
 }
+
+resource "azurerm_key_vault_secret" "ih_sftp_password" {
+
+  name         = "ih-sftp-password"
+  value        = azurerm_storage_account_local_user.IH.ssh_password
+  key_vault_id = module.key_vault.key_vault_id
+
+  depends_on = [
+    module.key_vault,
+    azurerm_storage_account_local_user.IH
+  ]
+
+}
