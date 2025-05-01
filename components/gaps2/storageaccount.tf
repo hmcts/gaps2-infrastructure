@@ -15,6 +15,8 @@ module "storage_account" {
   role_assignments = [
     "Storage Blob Data Contributor"
   ]
+
+  common_tags = module.tags.common_tags
 }
 
 resource "azurerm_storage_container" "ih" {
