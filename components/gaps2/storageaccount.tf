@@ -1,5 +1,5 @@
 module "storage_account" {
-  source = "git@github.com:hmcts/cnp-module-storage-account?ref=4.x"
+  source = "github.com:hmcts/cnp-module-storage-account?ref=4.x"
 
   env                      = var.env
   storage_account_name     = "${var.product}${var.env}"

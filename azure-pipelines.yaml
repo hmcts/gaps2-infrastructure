@@ -70,6 +70,7 @@ stages:
       - job:
         pool:
           vmImage: ${{ variables.agentImage }}
+        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
         steps:
           - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
             parameters:
@@ -77,6 +78,9 @@ stages:
               keyvaultSecret: 'azure-devops-sp-token'
               serviceConnection: 'azurerm-sandbox'
               overrideAction: ${{ parameters.overrideAction }}
+              projectName: ${{ variables.businessArea }}
+              environment: 'sbox'
+              runManualStart: true
 
   - ${{ each deployment in parameters.environment_components }}:
     - stage: ${{ deployment.deployment }}
