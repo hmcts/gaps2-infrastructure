@@ -6,10 +6,23 @@ module "key_vault" {
   product             = var.product
   env                 = var.env
   object_id           = data.azurerm_client_config.current.object_id
-  product_group_name  = "DTS Heritage Services"
+  product_group_name  = "GAPS2 Reporting"
 
-  common_tags         = module.tags.common_tags
+  common_tags = module.tags.common_tags
 }
+
+# Custom policy for team user using objectId of Entra user
+resource "azurerm_key_vault_access_policy" "custom" {
+  key_vault_id = azurerm_key_vault.kv.id
+  object_id    = "cc2d6a5d-5e54-4d39-ba3a-01fc0da9545c"
+  tenant_id    = data.azurerm_client_config.current.tenant_id
+
+  secret_permissions = [
+    "Get",
+    "List",
+  ]
+}
+
 
 resource "azurerm_key_vault_secret" "ih_sftp_password" {
 
