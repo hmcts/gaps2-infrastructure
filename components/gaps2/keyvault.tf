@@ -11,12 +11,12 @@ module "key_vault" {
 resource "azurerm_key_vault_secret" "ih_sftp_password" {
 
   name         = "ih-sftp-password"
-  value        = azurerm_storage_account_local_user.IH.ssh_password
+  value        = azurerm_storage_account_local_user.ihsftp.password
   key_vault_id = module.key_vault.key_vault_id
 
   depends_on = [
     module.key_vault,
-    azurerm_storage_account_local_user.IH
+    azurerm_storage_account_local_user.ihsftp
   ]
 
 }

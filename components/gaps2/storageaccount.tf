@@ -25,7 +25,7 @@ resource "azurerm_storage_container" "ih" {
   container_access_type = "private"
 }
 
-resource "azurerm_storage_account_local_user" "IH" {
+resource "azurerm_storage_account_local_user" "ihsftp" {
 
   name                 = "ihsftp"
   storage_account_id   = module.storage_account.storageaccount_id
