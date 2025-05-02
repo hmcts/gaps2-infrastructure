@@ -2,8 +2,8 @@ data "azurerm_subscription" "current" {}
 data "azurerm_client_config" "current" {}
 
 data "azurerm_virtual_network" "jumpbox_vnet" {
-  resource_group_name  = var.virtual_network.resource_group_name
-  name                 = var.virtual_network.virtual_network_name
+  resource_group_name = var.virtual_network.resource_group_name
+  name                = var.virtual_network.virtual_network_name
 }
 
 module "tags" {

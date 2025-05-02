@@ -14,7 +14,7 @@ variable "builtFrom" {
 
 variable "virtual_network" {
   description = "The details of the virtual network to create new subnets in."
-  type        = object({
+  type = object({
     virtual_network_name = string
     resource_group_name  = string
   })
