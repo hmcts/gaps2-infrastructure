@@ -16,33 +16,16 @@ module "storage_account" {
     "Storage Blob Data Contributor"
   ]
 
+  private_endpoint_subnet_id = azurerm_subnet.gaps2.id
+
   common_tags = module.tags.common_tags
 }
 
-resource "azurerm_storage_container" "ih" {
-  name                  = "ih-sftp"
-  storage_account_id    = module.storage_account.storageaccount_id
-  container_access_type = "private"
+resource "azurerm_private_dns_zone_virtual_network_link" "jumpbox" {
+
+  name                  = "jumpbox-${var.env}-vnet"
+  resource_group_name   = "core-infra-intsvc-rg"
+  private_dns_zone_name = "privatelink.blob.core.windows.net"
+  virtual_network_id    = data.azurerm_virtual_network.jumpbox_vnet.id
 }
 
-resource "azurerm_storage_account_local_user" "ihsftp" {
-
-  name                 = "ihsftp"
-  storage_account_id   = module.storage_account.storageaccount_id
-  ssh_password_enabled = true
-  home_directory       = "/"
-
-  permission_scope {
-    permissions {
-      read   = true
-      list   = true
-      create = true
-    }
-    service       = "blob"
-    resource_name = azurerm_storage_container.ih.name
-  }
-
-  depends_on = [
-    module.key_vault
-  ]
-}
