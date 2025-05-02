@@ -5,6 +5,9 @@ module "key_vault" {
   resource_group_name = azurerm_resource_group.rg.name
   product             = var.product
   env                 = var.env
+  object_id           = data.azurerm_client_config.current.object_id
+  product_group_name  = "DTS Heritage Services"
+
   common_tags         = module.tags.common_tags
 }
 
