@@ -13,7 +13,7 @@ module "key_vault" {
 
 # Custom policy for team user using objectId of Entra user
 resource "azurerm_key_vault_access_policy" "custom" {
-  key_vault_id = azurerm_key_vault.kv.id
+  key_vault_id = module.key_vault.key_vault_id
   object_id    = "cc2d6a5d-5e54-4d39-ba3a-01fc0da9545c"
   tenant_id    = data.azurerm_client_config.current.tenant_id
 
