@@ -23,7 +23,6 @@ resource "azurerm_key_vault_access_policy" "custom" {
   ]
 }
 
-
 resource "azurerm_key_vault_secret" "ih_sftp_password" {
 
   name         = "ih-sftp-password"
