@@ -1,5 +1,5 @@
 virtual_network = {
-    virtuale_network_name = "jumpbox-nonprod-vnet"
+    virtual_network_name = "jumpbox-nonprod-vnet"
     resource_group_name   = "jumpbox-nonprod-rg"
 }
 
