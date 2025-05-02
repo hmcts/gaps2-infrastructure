@@ -27,7 +27,7 @@ resource "azurerm_storage_container" "ih" {
 
 resource "azurerm_storage_account_local_user" "IH" {
 
-  name                 = "ih-sftp"
+  name                 = "ihsftp"
   storage_account_id   = module.storage_account.storageaccount_id
   ssh_password_enabled = true
   home_directory       = "/"
