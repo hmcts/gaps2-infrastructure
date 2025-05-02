@@ -20,14 +20,14 @@ module "storage_account" {
 }
 
 resource "azurerm_storage_container" "ih" {
-  name                  = "IH"
+  name                  = "ih-sftp"
   storage_account_id    = module.storage_account.storageaccount_id
   container_access_type = "private"
 }
 
 resource "azurerm_storage_account_local_user" "IH" {
 
-  name                 = "IH"
+  name                 = "ih-sftp"
   storage_account_id   = module.storage_account.storageaccount_id
   ssh_password_enabled = true
   home_directory       = "/"
