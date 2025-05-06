@@ -18,6 +18,7 @@ module "storage_account" {
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "jumpbox" {
+  provider = azurerm.privatelink
 
   name                  = "jumpbox-${var.env}-vnet"
   resource_group_name   = "core-infra-intsvc-rg"
