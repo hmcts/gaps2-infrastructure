@@ -4,11 +4,11 @@ locals {
   subscriptions = {
 
     nonprod = {
-      subscription = "b44eb479-9ae2-42e7-9c63-f3c599719b6f"
+      subscription   = "b44eb479-9ae2-42e7-9c63-f3c599719b6f"
       resource_group = "jumpbox-nonprod-rg"
     }
     prod = {
-      subscription = "2b1afc19-5ca9-4796-a56f-574a58670244"
+      subscription   = "2b1afc19-5ca9-4796-a56f-574a58670244"
       resource_group = "jumpbox-prod-rg"
     }
   }
