@@ -12,10 +12,6 @@ module "storage_account" {
   enable_hns  = true
   enable_sftp = true
 
-  role_assignments = [
-    "Storage Blob Data Contributor"
-  ]
-
   common_tags = module.tags.common_tags
 }
 
