@@ -12,10 +12,6 @@ module "storage_account" {
   enable_hns  = true
   enable_sftp = true
 
-  role_assignments = [
-    "Storage Blob Data Contributor"
-  ]
-
   private_endpoint_subnet_id = azurerm_subnet.gaps2.id
 
   common_tags = module.tags.common_tags

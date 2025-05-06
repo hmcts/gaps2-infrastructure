@@ -14,3 +14,10 @@ provider "azurerm" {
   features {}
   resource_provider_registrations = "none"
 }
+
+provider "azurerm" {
+  alias                           = "vnet"
+  resource_provider_registrations = "none"
+  subscription_id                 = local.subscriptions[local.vnet_subscription].subscription
+  features {}
+}
