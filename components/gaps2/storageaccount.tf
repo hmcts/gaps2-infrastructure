@@ -14,6 +14,10 @@ module "storage_account" {
 
   # private_endpoint_subnet_id = azurerm_subnet.gaps2.id
 
+  # sa_subnets = [
+  #   azurerm_subnet.gaps2.id
+  # ]
+
   common_tags = module.tags.common_tags
 }
 
