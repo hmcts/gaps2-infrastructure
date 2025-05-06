@@ -12,7 +12,7 @@ module "storage_account" {
   enable_hns  = true
   enable_sftp = true
 
-  private_endpoint_subnet_id = azurerm_subnet.gaps2.id
+  # private_endpoint_subnet_id = azurerm_subnet.gaps2.id
 
   common_tags = module.tags.common_tags
 }
