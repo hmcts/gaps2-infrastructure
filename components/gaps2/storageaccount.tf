@@ -1,5 +1,5 @@
 module "storage_account" {
-  source = "github.com/hmcts/cnp-module-storage-account?ref=4.x"
+  source = "github.com/hmcts/cnp-module-storage-account?ref=fix/private-endpoint-provider-4.x"
 
   env                      = var.env
   storage_account_name     = "hmcts${var.product}${var.env}sftp"
@@ -12,21 +12,18 @@ module "storage_account" {
   enable_hns  = true
   enable_sftp = true
 
-  private_endpoint_subnet_id = azurerm_subnet.gaps2.id
+  private_endpoint_subnet_id       = azurerm_subnet.gaps2.id
+  private_endpoint_subscription_id = local.subscriptions[local.vnet_subscription].subscription
 
   sa_subnets = [
     azurerm_subnet.gaps2.id
   ]
 
-  # sa_subnets = [
-  #   azurerm_subnet.gaps2.id
-  # ]
-
   common_tags = module.tags.common_tags
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "jumpbox" {
-  provider = azurerm.privatelink
+  provider = azurerm.privatelinkdns
 
   name                  = "jumpbox-${var.env}-vnet"
   resource_group_name   = "core-infra-intsvc-rg"
