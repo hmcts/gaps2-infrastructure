@@ -13,6 +13,7 @@ module "storage_account" {
   enable_sftp = true
 
   private_endpoint_subnet_id       = azurerm_subnet.gaps2.id
+  private_endpoint_rg_name         = local.subscriptions[local.vnet_subscription].resource_group
   private_endpoint_subscription_id = local.subscriptions[local.vnet_subscription].subscription
 
   sa_subnets = [
