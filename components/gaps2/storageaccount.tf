@@ -1,5 +1,5 @@
 module "storage_account" {
-  source = "github.com/hmcts/cnp-module-storage-account?ref=fix/private-endpoint-provider-4.x"
+  source = "github.com/hmcts/cnp-module-storage-account?ref=DTSPO-25519-fix-branch"
 
   env                      = var.env
   storage_account_name     = "hmcts${var.product}${var.env}sftp"
@@ -15,6 +15,7 @@ module "storage_account" {
   private_endpoint_subnet_id       = azurerm_subnet.gaps2.id
   private_endpoint_rg_name         = local.subscriptions[local.vnet_subscription].resource_group
   private_endpoint_subscription_id = local.subscriptions[local.vnet_subscription].subscription
+  create_dfs_private_endpoint      = true
 
   sa_subnets = [
     azurerm_subnet.gaps2.id
