@@ -1,5 +1,5 @@
 module "storage_account" {
-  source = "github.com/hmcts/cnp-module-storage-account?ref=DTSPO-25519-fix-branch"
+  source = "github.com/hmcts/cnp-module-storage-account?ref=fix/private-endpoint-provider-4.x"
 
   env                      = var.env
   storage_account_name     = "hmcts${var.product}${var.env}sftp"
