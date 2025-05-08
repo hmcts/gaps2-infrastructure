@@ -35,3 +35,9 @@ resource "azurerm_key_vault_secret" "ih_sftp_password" {
   ]
 
 }
+
+resource "azurerm_key_vault_secret" "storage_primary_key" {
+  name         = "${module.storage_account.storageaccount_name}-primary-key"
+  value        = module.storage_account.storageaccount_primary_access_key
+  key_vault_id = module.key_vault.key_vault_id
+}

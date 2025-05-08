@@ -15,6 +15,7 @@ module "storage_account" {
   private_endpoint_subnet_id       = azurerm_subnet.gaps2.id
   private_endpoint_rg_name         = local.subscriptions[local.vnet_subscription].resource_group
   private_endpoint_subscription_id = local.subscriptions[local.vnet_subscription].subscription
+  create_dfs_private_endpoint      = true
 
   sa_subnets = [
     azurerm_subnet.gaps2.id
